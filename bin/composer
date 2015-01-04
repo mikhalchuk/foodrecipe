@@ -1,0 +1,5 @@
+#!/bin/bash
+FILE=$(readlink -f $0);
+DIR=$(dirname $FILE)
+
+php "$DIR/composer.phar" --working-dir="$DIR/../" "$@"
