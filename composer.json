@@ -26,6 +26,9 @@
     "autoload": {
         "psr-4": {
             "FoodRecipe\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/"
+        ]
     }
 }
