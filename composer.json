@@ -16,7 +16,8 @@
         "elasticsearch/elasticsearch": "1.3.2"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "2.1.0"
+        "squizlabs/php_codesniffer": "2.1.0",
+        "raulfraile/ladybug": "1.0.11"
     },
     "scripts": {
         "post-install-cmd": [
