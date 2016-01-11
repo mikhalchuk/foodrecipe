@@ -1,27 +1,31 @@
 <?php
 namespace FoodRecipe\Command;
 
-use FoodRecipe\System\Framework\ConsoleCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use Symfony\Component\DomCrawler\Crawler;
 
-class CrawlerCommand extends ConsoleCommand
+class CrawlerCommand extends Command
 {
     protected function configure()
     {
-        $this
-            ->setName('crawler')
-            ->setDescription('Runs crawler');
+        $this->setName('crawler')->setDescription('Runs crawler');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \Guzzle\Http\Client $httpClient */
-        $httpClient = self::$container['httpClient'];
+        /** @var \FoodRecipe\System\ContainerAwareApplication $app */
+        $app = $this->getApplication();
+
+        print_r($app->getContainer()->keys());
+        die;
+
+        $httpClient = null;
 
         /** @var \Elasticsearch\Client $searchClient */
-        $searchClient = self::$container['searchClient'];
+        $searchClient = $app->getService('searchClient');
 
         $httpHeaders = [
             'Accept' => "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
